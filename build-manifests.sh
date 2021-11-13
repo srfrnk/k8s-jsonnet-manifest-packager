@@ -3,7 +3,7 @@
 set -Ee
 
 function exit {
-  echo "Exiting"
+  echo "Exiting" >&2
 }
 
 trap exit EXIT
