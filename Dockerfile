@@ -8,6 +8,7 @@ RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
 RUN useradd -ms /bin/bash user
 
 COPY ./build-manifests.sh /build-manifests.sh
+COPY ./sync-import.sh /sync-import.sh
 RUN mkdir /build && chown user /build
 
 USER user
