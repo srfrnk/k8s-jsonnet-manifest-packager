@@ -1,7 +1,10 @@
-FROM golang
+FROM ubuntu
 
-RUN go get github.com/google/go-jsonnet/cmd/jsonnet
+RUN apt-get update -y &&\
+  apt-get install -yy wget
 
+RUN wget https://github.com/google/go-jsonnet/releases/latest/download/jsonnet-go_0.17.0_linux_amd64.deb -O /usr/bin/jsonnet &&\
+  chmod +x /usr/bin/jsonnet
 RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq &&\
   chmod +x /usr/bin/yq
 
