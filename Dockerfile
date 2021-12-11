@@ -12,12 +12,12 @@ RUN wget https://github.com/google/go-jsonnet/releases/download/v0.17.0/go-jsonn
 RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq &&\
   chmod +x /usr/bin/yq
 
-RUN useradd -ms /bin/bash user
+RUN useradd -ms /bin/bash -u 1000 user
 
 COPY ./build-manifests.sh /build-manifests.sh
 COPY ./sync-import.sh /sync-import.sh
 RUN mkdir /build && chown user /build
 
-USER user
+USER 1000
 
 ENTRYPOINT [ "/bin/bash","-c","/build-manifests.sh $@" ]
